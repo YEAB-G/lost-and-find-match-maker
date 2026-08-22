@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import ReportForm from './components/ReportForm'
 import ReportList from './components/ReportList'
+import MatchResults from './components/MatchResults'
 
 interface HealthStatus {
   status: string
@@ -9,10 +10,14 @@ interface HealthStatus {
   version: string
 }
 
+type View = 'home' | 'matches'
+
 function App() {
   const [health, setHealth] = useState<HealthStatus | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [refreshTrigger, setRefreshTrigger] = useState(0)
+  const [currentView, setCurrentView] = useState<View>('home')
+  const [selectedReportId, setSelectedReportId] = useState<number | null>(null)
 
   useEffect(() => {
     fetch('http://localhost:8000/health')
@@ -26,14 +31,26 @@ function App() {
   }
 
   const handleViewMatches = (reportId: number) => {
-    // Phase 7 will implement this
-    console.log('View matches for report:', reportId)
+    setSelectedReportId(reportId)
+    setCurrentView('matches')
+  }
+
+  const handleBackToReports = () => {
+    setCurrentView('home')
+    setSelectedReportId(null)
+    setRefreshTrigger((prev) => prev + 1)
   }
 
   return (
     <div className="app">
       <header className="header">
-        <h1>University Lost & Found Matcher</h1>
+        <h1
+          className="header-title"
+          onClick={handleBackToReports}
+          style={{ cursor: 'pointer' }}
+        >
+          University Lost & Found Matcher
+        </h1>
         <p className="subtitle">
           Help reunite students with their lost items
         </p>
@@ -60,16 +77,26 @@ function App() {
           )}
         </section>
 
-        <ReportForm onReportCreated={handleReportCreated} />
+        {currentView === 'home' && (
+          <>
+            <ReportForm onReportCreated={handleReportCreated} />
+            <ReportList
+              refreshTrigger={refreshTrigger}
+              onViewMatches={handleViewMatches}
+            />
+          </>
+        )}
 
-        <ReportList
-          refreshTrigger={refreshTrigger}
-          onViewMatches={handleViewMatches}
-        />
+        {currentView === 'matches' && selectedReportId && (
+          <MatchResults
+            reportId={selectedReportId}
+            onBack={handleBackToReports}
+          />
+        )}
       </main>
 
       <footer className="footer">
-        <p>University Lost & Found Matcher • Phase 8 Complete</p>
+        <p>University Lost & Found Matcher • Phase 9 Complete</p>
       </footer>
     </div>
   )
