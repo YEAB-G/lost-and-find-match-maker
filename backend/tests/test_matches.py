@@ -11,11 +11,6 @@ Tests all 5 verification scenarios:
 
 from datetime import datetime
 
-import pytest
-from fastapi.testclient import TestClient
-
-from main import app
-
 
 def create_report(client, **kwargs) -> dict:
     """Helper to create a report and return the response."""

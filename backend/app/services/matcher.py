@@ -7,7 +7,7 @@ It uses weighted scoring across multiple factors and handles missing data gracef
 
 import re
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime
 from difflib import SequenceMatcher
 from typing import Optional
 
@@ -71,20 +71,6 @@ LOCATION_GROUPS = [
     {"parking lot", "parking garage", "parking structure"},
     {"admin building", "administration", "admin office"},
 ]
-
-# ============================================================================
-# VALID CATEGORIES
-# ============================================================================
-
-VALID_CATEGORIES = {
-    "electronics",
-    "bags",
-    "clothing",
-    "keys",
-    "documents",
-    "accessories",
-    "other",
-}
 
 # ============================================================================
 # DATA STRUCTURES

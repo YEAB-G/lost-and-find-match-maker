@@ -5,8 +5,6 @@ Provides GET /reports/{report_id}/matches to find potential matches
 for a given report using the matching engine.
 """
 
-from datetime import datetime, timezone
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 

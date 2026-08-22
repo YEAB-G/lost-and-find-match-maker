@@ -53,7 +53,7 @@ export default function MatchResults({ reportId, onBack }: MatchResultsProps) {
   return (
     <div className="match-results-container">
       {/* Back Button */}
-      <button className="back-btn" onClick={onBack}>
+      <button className="back-btn" onClick={onBack} aria-label="Back to reports list">
         ← Back to Reports
       </button>
 

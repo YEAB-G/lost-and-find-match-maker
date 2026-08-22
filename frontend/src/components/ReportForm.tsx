@@ -157,13 +157,13 @@ export default function ReportForm({ onReportCreated }: ReportFormProps) {
       <h2>Create a Report</h2>
 
       {showSuccess && (
-        <div className="success-message">
+        <div className="success-message" role="status" aria-live="polite">
           ✅ Report created successfully! Check the list below.
         </div>
       )}
 
       {errors.submit && (
-        <div className="error-message">
+        <div className="error-message" role="alert" aria-live="assertive">
           ❌ {errors.submit}
         </div>
       )}
@@ -203,8 +203,10 @@ export default function ReportForm({ onReportCreated }: ReportFormProps) {
             placeholder="e.g., Black AirPods Case"
             className={errors.title ? 'error' : ''}
             maxLength={200}
+            aria-required="true"
+            aria-describedby={errors.title ? 'title-error' : undefined}
           />
-          {errors.title && <span className="field-error">{errors.title}</span>}
+          {errors.title && <span id="title-error" className="field-error" role="alert">{errors.title}</span>}
         </div>
 
         {/* Description */}
@@ -219,8 +221,10 @@ export default function ReportForm({ onReportCreated }: ReportFormProps) {
             placeholder="Describe the item and where you lost/found it..."
             className={errors.description ? 'error' : ''}
             rows={3}
+            aria-required="true"
+            aria-describedby={errors.description ? 'description-error' : undefined}
           />
-          {errors.description && <span className="field-error">{errors.description}</span>}
+          {errors.description && <span id="description-error" className="field-error" role="alert">{errors.description}</span>}
         </div>
 
         {/* Location */}
@@ -236,8 +240,10 @@ export default function ReportForm({ onReportCreated }: ReportFormProps) {
             placeholder="e.g., Library, Cafeteria, Engineering Building"
             className={errors.location ? 'error' : ''}
             maxLength={200}
+            aria-required="true"
+            aria-describedby={errors.location ? 'location-error' : undefined}
           />
-          {errors.location && <span className="field-error">{errors.location}</span>}
+          {errors.location && <span id="location-error" className="field-error" role="alert">{errors.location}</span>}
         </div>
 
         {/* Date and Time */}
@@ -251,8 +257,10 @@ export default function ReportForm({ onReportCreated }: ReportFormProps) {
             value={formData.reported_at}
             onChange={(e) => setFormData({ ...formData, reported_at: e.target.value })}
             className={errors.reported_at ? 'error' : ''}
+            aria-required="true"
+            aria-describedby={errors.reported_at ? 'reported_at-error' : undefined}
           />
-          {errors.reported_at && <span className="field-error">{errors.reported_at}</span>}
+          {errors.reported_at && <span id="reported_at-error" className="field-error" role="alert">{errors.reported_at}</span>}
         </div>
 
         {/* Optional Fields */}

@@ -7,8 +7,6 @@ Tests are organized by the 8 required test scenarios plus additional edge cases.
 
 from datetime import datetime, timedelta
 
-import pytest
-
 from app.services.matcher import (
     Report,
     match_reports,

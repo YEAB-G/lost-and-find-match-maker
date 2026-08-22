@@ -81,14 +81,6 @@ export async function createReport(report: ReportCreate): Promise<Report> {
   return response.json();
 }
 
-export async function fetchReport(id: number): Promise<Report> {
-  const response = await fetch(`${API_BASE}/reports/${id}`);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch report: ${response.statusText}`);
-  }
-  return response.json();
-}
-
 export async function fetchMatches(reportId: number): Promise<MatchResponse> {
   const response = await fetch(`${API_BASE}/reports/${reportId}/matches`);
   if (!response.ok) {

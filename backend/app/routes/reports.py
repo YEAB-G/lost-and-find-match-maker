@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -19,7 +19,7 @@ router = APIRouter()
 def create_report(report: ReportCreate, db: Session = Depends(get_db)):
     """Create a new lost or found report."""
     # Check for future reported_at
-    now = datetime.utcnow()
+    now = datetime.now(tz=None)
     reported_at = report.reported_at.replace(tzinfo=None)
     if reported_at > now:
         raise HTTPException(
@@ -35,7 +35,7 @@ def create_report(report: ReportCreate, db: Session = Depends(get_db)):
         color=report.color,
         location=report.location,
         reported_at=reported_at,
-        created_at=datetime.utcnow(),
+        created_at=datetime.now(tz=None),
     )
     db.add(db_report)
     db.commit()

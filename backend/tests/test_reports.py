@@ -1,8 +1,5 @@
 from datetime import datetime, timedelta, timezone
 
-import pytest
-from fastapi.testclient import TestClient
-
 
 def test_create_lost_report(client):
     """Test creating a lost item report."""

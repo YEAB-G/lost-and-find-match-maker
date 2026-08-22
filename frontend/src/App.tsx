@@ -47,7 +47,12 @@ function App() {
         <h1
           className="header-title"
           onClick={handleBackToReports}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') handleBackToReports();
+          }}
           style={{ cursor: 'pointer' }}
+          role="button"
+          tabIndex={0}
         >
           University Lost & Found Matcher
         </h1>
@@ -96,7 +101,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p>University Lost & Found Matcher • Phase 9 Complete</p>
+        <p>University Lost & Found Matcher</p>
       </footer>
     </div>
   )
