@@ -423,12 +423,48 @@ Realistic improvements in priority order:
 
 ## 14. AI Usage
 
-> **TODO**: Edit this section to accurately describe how you personally used AI tools during this project.
->
-> Consider documenting:
-> - Which AI tools you used and for what purposes.
-> - What types of tasks you used AI for (code generation, debugging, planning, documentation).
-> - What you chose to write yourself versus what AI helped generate.
-> - Any specific prompts or approaches that were effective.
->
-> Keep this section honest and specific to your actual workflow.
+I used Codex as an AI coding assistant during development, mainly to speed up implementation and handle routine coding tasks.
+
+### My Role
+
+I was responsible for the main engineering decisions throughout the project. This included:
+
+- Understanding the requirements and defining the solution.
+- Deciding the system architecture and project structure.
+- Breaking the work into implementation phases.
+- Choosing the matching approach and scoring logic.
+- Deciding which report attributes should affect a match.
+- Defining how missing data should be handled.
+- Reviewing generated code and deciding whether it met the requirements.
+- Testing the application and validating the results.
+- Identifying issues and deciding how they should be fixed.
+
+### How I Used AI
+
+I used Codex as an AI coding assistant for implementation support, including:
+
+- Generating boilerplate and repetitive code.
+- Implementing components based on requirements I defined.
+- Helping with routine backend and frontend code.
+- Assisting with dependency updates and compatibility fixes.
+- Helping debug errors after I identified and provided the issue.
+- Generating test cases based on scenarios I requested.
+- Reviewing code for obvious errors or duplication.
+- Assisting with documentation and deployment preparation.
+
+I worked iteratively rather than asking AI to build the project without direction. I first defined the task or problem, then used Codex to help implement or investigate it. I reviewed the output, tested it locally, and refined the implementation where needed.
+
+### Development Approach
+
+The workflow was:
+
+1. I analyzed the project requirements.
+2. I decided the architecture and core implementation approach.
+3. I broke the project into smaller development phases.
+4. I defined the requirements for each phase.
+5. Codex assisted with implementing the requested code.
+6. I reviewed the implementation and tested it.
+7. I identified issues and guided further changes.
+8. I made the final decisions about what remained in the project.
+
+AI was used to increase development speed, not to replace engineering judgment. The core design decisions, requirements, review process, and validation remained my responsibility.
