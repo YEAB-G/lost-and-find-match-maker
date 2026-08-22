@@ -12,6 +12,8 @@ interface HealthStatus {
 
 type View = 'home' | 'matches'
 
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 function App() {
   const [health, setHealth] = useState<HealthStatus | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -20,7 +22,7 @@ function App() {
   const [selectedReportId, setSelectedReportId] = useState<number | null>(null)
 
   useEffect(() => {
-    fetch('http://localhost:8000/health')
+    fetch(`${API_BASE}/health`)
       .then((res) => res.json())
       .then((data) => setHealth(data))
       .catch(() => setError('Unable to connect to backend'))
