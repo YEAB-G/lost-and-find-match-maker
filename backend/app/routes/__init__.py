@@ -1,3 +1,3 @@
-from app.routes import health, reports
+from app.routes import health, matches, reports
 
-__all__ = ["health", "reports"]
+__all__ = ["health", "reports", "matches"]

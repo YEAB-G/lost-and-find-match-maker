@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.database import engine
 from app.models import Report  # noqa: F401
-from app.routes import health, reports
+from app.routes import health, matches, reports
 
 
 @asynccontextmanager
@@ -36,6 +36,7 @@ app.add_middleware(
 # Include routers
 app.include_router(health.router)
 app.include_router(reports.router)
+app.include_router(matches.router)
 
 
 @app.get("/")
