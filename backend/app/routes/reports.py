@@ -19,9 +19,9 @@ router = APIRouter()
 def create_report(report: ReportCreate, db: Session = Depends(get_db)):
     """Create a new lost or found report."""
     # Check for future reported_at
-    now = datetime.now(timezone.utc)
+    now = datetime.utcnow()
     reported_at = report.reported_at.replace(tzinfo=None)
-    if reported_at > now.replace(tzinfo=None):
+    if reported_at > now:
         raise HTTPException(
             status_code=422,
             detail="reported_at cannot be in the future",

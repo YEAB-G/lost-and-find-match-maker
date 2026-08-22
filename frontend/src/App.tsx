@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import ReportForm from './components/ReportForm'
+import ReportList from './components/ReportList'
 
 interface HealthStatus {
   status: string
@@ -10,6 +12,7 @@ interface HealthStatus {
 function App() {
   const [health, setHealth] = useState<HealthStatus | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [refreshTrigger, setRefreshTrigger] = useState(0)
 
   useEffect(() => {
     fetch('http://localhost:8000/health')
@@ -17,6 +20,15 @@ function App() {
       .then((data) => setHealth(data))
       .catch(() => setError('Unable to connect to backend'))
   }, [])
+
+  const handleReportCreated = () => {
+    setRefreshTrigger((prev) => prev + 1)
+  }
+
+  const handleViewMatches = (reportId: number) => {
+    // Phase 7 will implement this
+    console.log('View matches for report:', reportId)
+  }
 
   return (
     <div className="app">
@@ -48,20 +60,16 @@ function App() {
           )}
         </section>
 
-        <section className="placeholder-section">
-          <h2>Welcome</h2>
-          <p>
-            This application helps university staff identify potential matches
-            between lost and found item reports using an automated scoring system.
-          </p>
-          <p className="placeholder-text">
-            🚀 Ready for Phase 2 implementation
-          </p>
-        </section>
+        <ReportForm onReportCreated={handleReportCreated} />
+
+        <ReportList
+          refreshTrigger={refreshTrigger}
+          onViewMatches={handleViewMatches}
+        />
       </main>
 
       <footer className="footer">
-        <p>University Lost & Found Matcher • Phase 1 Complete</p>
+        <p>University Lost & Found Matcher • Phase 8 Complete</p>
       </footer>
     </div>
   )
